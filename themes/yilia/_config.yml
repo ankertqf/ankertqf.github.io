@@ -6,7 +6,7 @@ menu:
 
 # SubNav
 subnav:
-  github: "#"
+  github: "https://github.com/ankertqf/ankertqf.github.io/tree/master"
   weibo: "#"
   rss: "#"
   zhihu: "#"
@@ -68,7 +68,7 @@ google_analytics: ''
 favicon: /favicon.png
 
 #你的头像url
-avatar:
+avatar: /img/lena.jpg
 
 #是否开启分享
 share_jia: true
