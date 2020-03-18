@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>键值对container.Map</title>
+    <url>/2020/03/18/Matlab%E9%94%AE%E5%80%BC%E5%AF%B9container.Map/</url>
+    <content><![CDATA[<h1 id="键值对container-Map"><a href="#键值对container-Map" class="headerlink" title="键值对container.Map"></a>键值对container.Map</h1><h2 id="初始化方法："><a href="#初始化方法：" class="headerlink" title="初始化方法："></a>初始化方法：</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">M &#x3D; containers.Map(keySet,valueSet)</span><br><span class="line">M &#x3D; containers.Map(keySet,valueSet,&#39;UniformValues&#39;,isUniform)</span><br><span class="line">M &#x3D; containers.Map(&#39;KeyType&#39;,kType,&#39;ValueType&#39;,vType)</span><br><span class="line">M &#x3D; containers.Map</span><br><span class="line"></span><br><span class="line">&#39;UniformValues&#39;为valueSet 中的统一值的指示符，表示valueSet中的类型必须一致，</span><br><span class="line">指定为 true (默认) 或 false。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">keySet &#x3D; &#123;&#39;Jan&#39;,&#39;Feb&#39;,&#39;Mar&#39;,&#39;Apr&#39;&#125;;</span><br><span class="line">valueSet &#x3D; [327.2 368.2 197.6 178.4];</span><br><span class="line">M &#x3D; containers.Map(keySet,valueSet)</span><br><span class="line">M &#x3D; </span><br><span class="line">  Map with properties:</span><br><span class="line">        Count: 4</span><br><span class="line">      KeyType: char</span><br><span class="line">    ValueType: double</span><br><span class="line"></span><br><span class="line">M(&#39;Mar&#39;)</span><br><span class="line">ans &#x3D; 197.6000</span><br></pre></td></tr></table></figure>
+<h2 id="修改元素"><a href="#修改元素" class="headerlink" title="修改元素:"></a>修改元素:</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">M(&#39;Mar&#39;) &#x3D; 123</span><br><span class="line">M(&#39;Mar&#39;)</span><br><span class="line">ans &#x3D; 123</span><br></pre></td></tr></table></figure>
+<h2 id="添加元素"><a href="#添加元素" class="headerlink" title="添加元素:"></a>添加元素:</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">M(&#39;anker&#39;) &#x3D; 1024</span><br><span class="line">M.Count</span><br><span class="line">ans &#x3D; 5</span><br></pre></td></tr></table></figure>
+<h2 id="删除元素："><a href="#删除元素：" class="headerlink" title="删除元素："></a>删除元素：</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">M.remove(&#39;anker&#39;) </span><br><span class="line">ans &#x3D; </span><br><span class="line">  Map - 属性:</span><br><span class="line">        Count: 4</span><br><span class="line">      KeyType: char</span><br><span class="line">    ValueType: double</span><br></pre></td></tr></table></figure>
+<h2 id="isKey"><a href="#isKey" class="headerlink" title="isKey:"></a>isKey:</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">M.isKey(&#39;anker&#39;)</span><br><span class="line">ans &#x3D; 0</span><br></pre></td></tr></table></figure>
+<h2 id="返回key"><a href="#返回key" class="headerlink" title="返回key:"></a>返回key:</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">keys(M)</span><br><span class="line">ans &#x3D;</span><br><span class="line"> 1×4 cell 数组</span><br><span class="line">   &#123;&#39;Apr&#39;&#125;    &#123;&#39;Feb&#39;&#125;    &#123;&#39;Jan&#39;&#125;    &#123;&#39;Mar&#39;&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="返回value"><a href="#返回value" class="headerlink" title="返回value:"></a>返回value:</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">values(M)</span><br><span class="line">ans &#x3D;</span><br><span class="line">  1×4 cell 数组</span><br><span class="line">    &#123;[178.4000]&#125;    &#123;[368.2000]&#125;    &#123;[327.2000]&#125;    &#123;[123]&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Matlab</category>
+      </categories>
+      <tags>
+        <tag>键值对</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2020/03/17/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+]]></content>
+  </entry>
+</search>
