@@ -125,7 +125,7 @@ darkmode: false
 menu:
   home: / || home
   about: /about/ || user
-  tags: /tags/ || tags
+  #tags: /tags/ || tags
   categories: /categories/ || th
   archives: /archives/ || archive
   #schedule: /schedule/ || calendar
@@ -1011,3 +1011,7 @@ images: images
 # add canvas-nest effect
 # see detail from https://github.com/hustcc/canvas-nest.js
 canvas_nest: true
+
+skip_render: 
+    - 'README.md'
+    - 'demo/*.html'
