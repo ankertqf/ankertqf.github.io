@@ -1,7 +1,9 @@
 ---
 title: 键值对container.Map
 date: 2020-03-18 11:12:43
-categories: Matlab
+categories: 
+- Matlab
+- Matlab知识点
 ---
 
 # 键值对container.Map
@@ -54,19 +56,19 @@ ans =
 ## isKey:
 
 ```
- M.isKey('anker')
+ M.isKey('anker')或isKey(M, 'anker')
  ans = 0
 ```
 ## 返回key:
 ```
- keys(M)
+ keys(M)或M.keys
  ans =
   1×4 cell 数组
     {'Apr'}    {'Feb'}    {'Jan'}    {'Mar'}  
 ```
 ## 返回value:
 ```
-values(M)
+values(M)或M.values
 ans =
   1×4 cell 数组
     {[178.4000]}    {[368.2000]}    {[327.2000]}    {[123]} 
