@@ -1,12 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Matlab学习笔记</title>
-    <url>/2020/03/18/Matlab%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="Matlab学习笔记"><a href="#Matlab学习笔记" class="headerlink" title="Matlab学习笔记"></a>Matlab学习笔记</h1><h2 id="键值对container-Map"><a href="#键值对container-Map" class="headerlink" title="键值对container.Map"></a><a href="http://localhost:4000/2020/03/18/Matlab%E9%94%AE%E5%80%BC%E5%AF%B9container.Map/index.html" target="_blank" rel="noopener">键值对container.Map</a></h2>]]></content>
+    <title>Hexo 文章多级分类</title>
+    <url>/2020/03/19/Hexo%20%E6%96%87%E7%AB%A0%E5%A4%9A%E7%BA%A7%E5%88%86%E7%B1%BB/</url>
+    <content><![CDATA[<h1 id="Hexo-文章多级分类"><a href="#Hexo-文章多级分类" class="headerlink" title="Hexo 文章多级分类"></a>Hexo 文章多级分类</h1><p>Hexo原生支持父子分类，只需要在 Front-matter中的分类标记后面写下多个分类就行了。写在后面的分类就在前面分类的子分类，例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">categories: </span><br><span class="line">- Matlab</span><br><span class="line">- Matlab知识点</span><br></pre></td></tr></table></figure>
+<p>会使分类<strong>Matlab知识点</strong>成为<strong>Matlab</strong>的子分类，而不是并列分类。</p>
+]]></content>
       <categories>
-        <category>Matlab</category>
+        <category>hexo</category>
       </categories>
+      <tags>
+        <tag>多级分类</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>markdown首行缩进</title>
+    <url>/2020/03/19/markdown%E9%A6%96%E8%A1%8C%E7%BC%A9%E8%BF%9B/</url>
+    <content><![CDATA[<h1 id="markdown首行缩进"><a href="#markdown首行缩进" class="headerlink" title="markdown首行缩进"></a>markdown首行缩进</h1><p>首行缩进两个字符：(每个表示一个空格，连续使用两个即可）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&amp;ensp; 半角的空格</span><br><span class="line">&amp;emsp; 全角的空格</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>markdown</category>
+      </categories>
+      <tags>
+        <tag>首行缩进</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C语言生成哈达玛（Hadamard）矩阵</title>
+    <url>/2020/03/19/C%E8%AF%AD%E8%A8%80%E7%94%9F%E6%88%90%E5%93%88%E8%BE%BE%E7%8E%9B%EF%BC%88Hadamard%EF%BC%89%E7%9F%A9%E9%98%B5/</url>
+    <content><![CDATA[<h1 id="C语言生成哈达玛（Hadamard）矩阵"><a href="#C语言生成哈达玛（Hadamard）矩阵" class="headerlink" title="C语言生成哈达玛（Hadamard）矩阵"></a>C语言生成哈达玛（Hadamard）矩阵</h1><p><strong>Hadamard矩阵定义：</strong><br>&ensp;&ensp;&ensp;&ensp;哈达玛（Hadamard)矩阵是由+1和-1元素构成的且满足Hn * Hn’=nI（这里Hn’为Hn的转置，I为单位方阵）n阶方阵。</p>
+<p><strong>生成：</strong><br>调用matlab函数hadamard(2)生成2阶哈达玛矩阵：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hadamard(2)</span><br><span class="line">ans &#x3D;</span><br><span class="line">    	1     1</span><br><span class="line">    	1    -1</span><br></pre></td></tr></table></figure>
+<p>在hadamard源码中可以看到</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">for i &#x3D; 1:e</span><br><span class="line">    H &#x3D; [H  H</span><br><span class="line">         H -H]; </span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>知道任意2^n^阶hadamard矩阵都是2^n-1^阶hadamard矩阵通过如上结构的叠加</p>
+<p>所以生成2^n^阶hadamard矩阵的C语言实现如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">int* GenerateHDM(int n)</span><br><span class="line">&#123;</span><br><span class="line">	int i, j, k, N;</span><br><span class="line">	int L = 1 &lt;&lt; n;//边长</span><br><span class="line">	int* Hadamard = (int*)malloc(L * L * sizeof(int));</span><br><span class="line"></span><br><span class="line">	Hadamard[0] = 1;</span><br><span class="line">	Hadamard[1] = 1;</span><br><span class="line">	Hadamard[L] = 1;</span><br><span class="line">	Hadamard[L + 1] = -1;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (k = 1; k &lt;= n - 1; k++)</span><br><span class="line">	&#123;</span><br><span class="line">		N = 1 &lt;&lt; k;</span><br><span class="line">		<span class="keyword">for</span> (i = 0; i &lt; N; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span> (j = 0; j &lt; N; j++)</span><br><span class="line">			&#123;</span><br><span class="line">				Hadamard[(N + i) * L + j] = Hadamard[i * L + j];</span><br><span class="line">				Hadamard[i * L + N + j] = Hadamard[i * L + j];</span><br><span class="line">				Hadamard[(N + i) * L + N + j] = -Hadamard[i * L + j];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">return</span> Hadamard;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用GenerateHDM生成边长为8的hadamard矩阵结果如下</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1     1     1     1     1     1     1     1</span><br><span class="line">1    -1     1    -1     1    -1     1    -1</span><br><span class="line">1     1    -1    -1     1     1    -1    -1</span><br><span class="line">1    -1    -1     1     1    -1    -1     1</span><br><span class="line">1     1     1     1    -1    -1    -1    -1</span><br><span class="line">1    -1     1    -1    -1     1    -1     1</span><br><span class="line">1     1    -1    -1    -1    -1     1     1</span><br><span class="line">1    -1    -1     1    -1     1     1    -1</span><br></pre></td></tr></table></figure>
+<p>matlab调用结果：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1     1     1     1     1     1     1     1</span><br><span class="line">1    -1     1    -1     1    -1     1    -1</span><br><span class="line">1     1    -1    -1     1     1    -1    -1</span><br><span class="line">1    -1    -1     1     1    -1    -1     1</span><br><span class="line">1     1     1     1    -1    -1    -1    -1</span><br><span class="line">1    -1     1    -1    -1     1    -1     1</span><br><span class="line">1     1    -1    -1    -1    -1     1     1</span><br><span class="line">1    -1    -1     1    -1     1     1    -1</span><br></pre></td></tr></table></figure>
+<p><strong>perfect !</strong></p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>Hadamard</tag>
+        <tag>C语言</tag>
+      </tags>
   </entry>
   <entry>
     <title>键值对container.Map</title>
@@ -16,12 +62,13 @@
 <h2 id="修改元素"><a href="#修改元素" class="headerlink" title="修改元素:"></a>修改元素:</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">M(&#39;Mar&#39;) &#x3D; 123</span><br><span class="line">M(&#39;Mar&#39;)</span><br><span class="line">ans &#x3D; 123</span><br></pre></td></tr></table></figure>
 <h2 id="添加元素"><a href="#添加元素" class="headerlink" title="添加元素:"></a>添加元素:</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">M(&#39;anker&#39;) &#x3D; 1024</span><br><span class="line">M.Count</span><br><span class="line">ans &#x3D; 5</span><br></pre></td></tr></table></figure>
 <h2 id="删除元素："><a href="#删除元素：" class="headerlink" title="删除元素："></a>删除元素：</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">M.remove(&#39;anker&#39;) </span><br><span class="line">ans &#x3D; </span><br><span class="line">  Map - 属性:</span><br><span class="line">        Count: 4</span><br><span class="line">      KeyType: char</span><br><span class="line">    ValueType: double</span><br></pre></td></tr></table></figure>
-<h2 id="isKey"><a href="#isKey" class="headerlink" title="isKey:"></a>isKey:</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">M.isKey(&#39;anker&#39;)</span><br><span class="line">ans &#x3D; 0</span><br></pre></td></tr></table></figure>
-<h2 id="返回key"><a href="#返回key" class="headerlink" title="返回key:"></a>返回key:</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">keys(M)</span><br><span class="line">ans &#x3D;</span><br><span class="line"> 1×4 cell 数组</span><br><span class="line">   &#123;&#39;Apr&#39;&#125;    &#123;&#39;Feb&#39;&#125;    &#123;&#39;Jan&#39;&#125;    &#123;&#39;Mar&#39;&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="返回value"><a href="#返回value" class="headerlink" title="返回value:"></a>返回value:</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">values(M)</span><br><span class="line">ans &#x3D;</span><br><span class="line">  1×4 cell 数组</span><br><span class="line">    &#123;[178.4000]&#125;    &#123;[368.2000]&#125;    &#123;[327.2000]&#125;    &#123;[123]&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="isKey"><a href="#isKey" class="headerlink" title="isKey:"></a>isKey:</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">M.isKey(&#39;anker&#39;)或isKey(M, &#39;anker&#39;)</span><br><span class="line">ans &#x3D; 0</span><br></pre></td></tr></table></figure>
+<h2 id="返回key"><a href="#返回key" class="headerlink" title="返回key:"></a>返回key:</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">keys(M)或M.keys</span><br><span class="line">ans &#x3D;</span><br><span class="line"> 1×4 cell 数组</span><br><span class="line">   &#123;&#39;Apr&#39;&#125;    &#123;&#39;Feb&#39;&#125;    &#123;&#39;Jan&#39;&#125;    &#123;&#39;Mar&#39;&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="返回value"><a href="#返回value" class="headerlink" title="返回value:"></a>返回value:</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">values(M)或M.values</span><br><span class="line">ans &#x3D;</span><br><span class="line">  1×4 cell 数组</span><br><span class="line">    &#123;[178.4000]&#125;    &#123;[368.2000]&#125;    &#123;[327.2000]&#125;    &#123;[123]&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Matlab</category>
+        <category>Matlab知识点</category>
       </categories>
   </entry>
 </search>
