@@ -22,27 +22,43 @@
     var CONFIG = {"hostname":"ankertqf.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Anker&#39;s blog">
-<meta property="og:url" content="https://ankertqf.github.io/index.html">
+  <meta name="description" content="使用MFC自动将windows路径中单反斜杠自动转换为双反斜杠缘由：&amp;ensp;&amp;ensp;由于windows下路径复制时为单杠，手动改为双杠效率极低，因此想要实现单杠自动转换的代码，经过各种尝试发现只有在使用C的scanf和python的input()等输入函数时单杠才不会被当作转义字符，类似r’str\str’中r的作用，给变量赋值时会自动转为双反斜杠。 12345678910void mai">
+<meta property="og:type" content="article">
+<meta property="og:title" content="键值对container.Map">
+<meta property="og:url" content="https://ankertqf.github.io/2020/03/18/%E5%8D%95%E5%8F%8D%E6%96%9C%E6%9D%A0%E8%87%AA%E5%8A%A8%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%8F%8C%E5%8F%8D%E6%96%9C%E6%9D%A0/index.html">
 <meta property="og:site_name" content="Anker&#39;s blog">
+<meta property="og:description" content="使用MFC自动将windows路径中单反斜杠自动转换为双反斜杠缘由：&amp;ensp;&amp;ensp;由于windows下路径复制时为单杠，手动改为双杠效率极低，因此想要实现单杠自动转换的代码，经过各种尝试发现只有在使用C的scanf和python的input()等输入函数时单杠才不会被当作转义字符，类似r’str\str’中r的作用，给变量赋值时会自动转为双反斜杠。 12345678910void mai">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020040109580866.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200401095752165.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200401100251920.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200401134122986.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Fua2VydHFm,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200401134142705.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Fua2VydHFm,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200401134545399.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200401135017572.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Fua2VydHFm,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200401141516367.png">
+<meta property="article:published_time" content="2020-03-18T03:12:43.000Z">
+<meta property="article:modified_time" content="2020-04-01T06:19:31.652Z">
 <meta property="article:author" content="Anker">
+<meta property="article:tag" content="反斜杠">
+<meta property="article:tag" content="tkinter">
+<meta property="article:tag" content="MFC">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2020040109580866.png">
 
-<link rel="canonical" href="https://ankertqf.github.io/">
+<link rel="canonical" href="https://ankertqf.github.io/2020/03/18/%E5%8D%95%E5%8F%8D%E6%96%9C%E6%9D%A0%E8%87%AA%E5%8A%A8%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%8F%8C%E5%8F%8D%E6%96%9C%E6%9D%A0/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false
+    isHome : false,
+    isPost : true
   };
 </script>
 
-  <title>Anker's blog</title>
+  <title>键值对container.Map | Anker's blog</title>
   
 
 
@@ -188,323 +204,10 @@
             
 
   <div class="posts-expand">
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://ankertqf.github.io/2020/03/19/Hexo%20%E6%96%87%E7%AB%A0%E5%A4%9A%E7%BA%A7%E5%88%86%E7%B1%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/lena.jpg">
-      <meta itemprop="name" content="Anker">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Anker's blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/19/Hexo%20%E6%96%87%E7%AB%A0%E5%A4%9A%E7%BA%A7%E5%88%86%E7%B1%BB/" class="post-title-link" itemprop="url">Hexo 文章多级分类</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-03-19 11:33:56 / 修改时间：11:44:14" itemprop="dateCreated datePublished" datetime="2020-03-19T11:33:56+08:00">2020-03-19</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
       
-          <h1 id="Hexo-文章多级分类"><a href="#Hexo-文章多级分类" class="headerlink" title="Hexo 文章多级分类"></a>Hexo 文章多级分类</h1><p>Hexo原生支持父子分类，只需要在 Front-matter中的分类标记后面写下多个分类就行了。写在后面的分类就在前面分类的子分类，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">categories: </span><br><span class="line">- Matlab</span><br><span class="line">- Matlab知识点</span><br></pre></td></tr></table></figure>
-<p>会使分类<strong>Matlab知识点</strong>成为<strong>Matlab</strong>的子分类，而不是并列分类。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
   
   
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://ankertqf.github.io/2020/03/19/markdown%E9%A6%96%E8%A1%8C%E7%BC%A9%E8%BF%9B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/lena.jpg">
-      <meta itemprop="name" content="Anker">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Anker's blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/19/markdown%E9%A6%96%E8%A1%8C%E7%BC%A9%E8%BF%9B/" class="post-title-link" itemprop="url">markdown首行缩进</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-03-19 11:12:30" itemprop="dateCreated datePublished" datetime="2020-03-19T11:12:30+08:00">2020-03-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-01 09:38:09" itemprop="dateModified" datetime="2020-04-01T09:38:09+08:00">2020-04-01</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/markdown/" itemprop="url" rel="index"><span itemprop="name">markdown</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="markdown首行缩进"><a href="#markdown首行缩进" class="headerlink" title="markdown首行缩进"></a>markdown首行缩进</h1><p>&ensp;&ensp;首行缩进两个字符：(每个表示一个空格，连续使用两个即可）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&amp;ensp; 半角的空格</span><br><span class="line">&amp;emsp; 全角的空格</span><br><span class="line">注意(;)符号不能少</span><br></pre></td></tr></table></figure>
-
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://ankertqf.github.io/2020/03/19/C%E8%AF%AD%E8%A8%80%E7%94%9F%E6%88%90%E5%93%88%E8%BE%BE%E7%8E%9B%EF%BC%88Hadamard%EF%BC%89%E7%9F%A9%E9%98%B5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/lena.jpg">
-      <meta itemprop="name" content="Anker">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Anker's blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/19/C%E8%AF%AD%E8%A8%80%E7%94%9F%E6%88%90%E5%93%88%E8%BE%BE%E7%8E%9B%EF%BC%88Hadamard%EF%BC%89%E7%9F%A9%E9%98%B5/" class="post-title-link" itemprop="url">C语言生成哈达玛（Hadamard）矩阵</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-03-19 11:12:30 / 修改时间：11:19:22" itemprop="dateCreated datePublished" datetime="2020-03-19T11:12:30+08:00">2020-03-19</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="C语言生成哈达玛（Hadamard）矩阵"><a href="#C语言生成哈达玛（Hadamard）矩阵" class="headerlink" title="C语言生成哈达玛（Hadamard）矩阵"></a>C语言生成哈达玛（Hadamard）矩阵</h1><p><strong>Hadamard矩阵定义：</strong><br>&ensp;&ensp;&ensp;&ensp;哈达玛（Hadamard)矩阵是由+1和-1元素构成的且满足Hn * Hn’=nI（这里Hn’为Hn的转置，I为单位方阵）n阶方阵。</p>
-<p><strong>生成：</strong><br>调用matlab函数hadamard(2)生成2阶哈达玛矩阵：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hadamard(2)</span><br><span class="line">ans &#x3D;</span><br><span class="line">    	1     1</span><br><span class="line">    	1    -1</span><br></pre></td></tr></table></figure>
-<p>在hadamard源码中可以看到</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for i &#x3D; 1:e</span><br><span class="line">    H &#x3D; [H  H</span><br><span class="line">         H -H]; </span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-<p>知道任意2^n^阶hadamard矩阵都是2^n-1^阶hadamard矩阵通过如上结构的叠加</p>
-<p>所以生成2^n^阶hadamard矩阵的C语言实现如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">int* GenerateHDM(int n)</span><br><span class="line">&#123;</span><br><span class="line">	int i, j, k, N;</span><br><span class="line">	int L = 1 &lt;&lt; n;//边长</span><br><span class="line">	int* Hadamard = (int*)malloc(L * L * sizeof(int));</span><br><span class="line"></span><br><span class="line">	Hadamard[0] = 1;</span><br><span class="line">	Hadamard[1] = 1;</span><br><span class="line">	Hadamard[L] = 1;</span><br><span class="line">	Hadamard[L + 1] = -1;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (k = 1; k &lt;= n - 1; k++)</span><br><span class="line">	&#123;</span><br><span class="line">		N = 1 &lt;&lt; k;</span><br><span class="line">		<span class="keyword">for</span> (i = 0; i &lt; N; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span> (j = 0; j &lt; N; j++)</span><br><span class="line">			&#123;</span><br><span class="line">				Hadamard[(N + i) * L + j] = Hadamard[i * L + j];</span><br><span class="line">				Hadamard[i * L + N + j] = Hadamard[i * L + j];</span><br><span class="line">				Hadamard[(N + i) * L + N + j] = -Hadamard[i * L + j];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">return</span> Hadamard;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>调用GenerateHDM生成边长为8的hadamard矩阵结果如下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1     1     1     1     1     1     1     1</span><br><span class="line">1    -1     1    -1     1    -1     1    -1</span><br><span class="line">1     1    -1    -1     1     1    -1    -1</span><br><span class="line">1    -1    -1     1     1    -1    -1     1</span><br><span class="line">1     1     1     1    -1    -1    -1    -1</span><br><span class="line">1    -1     1    -1    -1     1    -1     1</span><br><span class="line">1     1    -1    -1    -1    -1     1     1</span><br><span class="line">1    -1    -1     1    -1     1     1    -1</span><br></pre></td></tr></table></figure>
-<p>matlab调用结果：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1     1     1     1     1     1     1     1</span><br><span class="line">1    -1     1    -1     1    -1     1    -1</span><br><span class="line">1     1    -1    -1     1     1    -1    -1</span><br><span class="line">1    -1    -1     1     1    -1    -1     1</span><br><span class="line">1     1     1     1    -1    -1    -1    -1</span><br><span class="line">1    -1     1    -1    -1     1    -1     1</span><br><span class="line">1     1    -1    -1    -1    -1     1     1</span><br><span class="line">1    -1    -1     1    -1     1     1    -1</span><br></pre></td></tr></table></figure>
-<p><strong>perfect !</strong></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://ankertqf.github.io/2020/03/18/Matlab%E9%94%AE%E5%80%BC%E5%AF%B9container.Map/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/lena.jpg">
-      <meta itemprop="name" content="Anker">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Anker's blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/18/Matlab%E9%94%AE%E5%80%BC%E5%AF%B9container.Map/" class="post-title-link" itemprop="url">键值对container.Map</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-03-18 11:12:43" itemprop="dateCreated datePublished" datetime="2020-03-18T11:12:43+08:00">2020-03-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-19 09:27:35" itemprop="dateModified" datetime="2020-03-19T09:27:35+08:00">2020-03-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Matlab/" itemprop="url" rel="index"><span itemprop="name">Matlab</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Matlab/Matlab%E7%9F%A5%E8%AF%86%E7%82%B9/" itemprop="url" rel="index"><span itemprop="name">Matlab知识点</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="键值对container-Map"><a href="#键值对container-Map" class="headerlink" title="键值对container.Map"></a>键值对container.Map</h1><h2 id="初始化方法："><a href="#初始化方法：" class="headerlink" title="初始化方法："></a>初始化方法：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">M &#x3D; containers.Map(keySet,valueSet)</span><br><span class="line">M &#x3D; containers.Map(keySet,valueSet,&#39;UniformValues&#39;,isUniform)</span><br><span class="line">M &#x3D; containers.Map(&#39;KeyType&#39;,kType,&#39;ValueType&#39;,vType)</span><br><span class="line">M &#x3D; containers.Map</span><br><span class="line"></span><br><span class="line">&#39;UniformValues&#39;为valueSet 中的统一值的指示符，表示valueSet中的类型必须一致，</span><br><span class="line">指定为 true (默认) 或 false。</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">keySet &#x3D; &#123;&#39;Jan&#39;,&#39;Feb&#39;,&#39;Mar&#39;,&#39;Apr&#39;&#125;;</span><br><span class="line">valueSet &#x3D; [327.2 368.2 197.6 178.4];</span><br><span class="line">M &#x3D; containers.Map(keySet,valueSet)</span><br><span class="line">M &#x3D; </span><br><span class="line">  Map with properties:</span><br><span class="line">        Count: 4</span><br><span class="line">      KeyType: char</span><br><span class="line">    ValueType: double</span><br><span class="line"></span><br><span class="line">M(&#39;Mar&#39;)</span><br><span class="line">ans &#x3D; 197.6000</span><br></pre></td></tr></table></figure>
-<h2 id="修改元素"><a href="#修改元素" class="headerlink" title="修改元素:"></a>修改元素:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">M(&#39;Mar&#39;) &#x3D; 123</span><br><span class="line">M(&#39;Mar&#39;)</span><br><span class="line">ans &#x3D; 123</span><br></pre></td></tr></table></figure>
-<h2 id="添加元素"><a href="#添加元素" class="headerlink" title="添加元素:"></a>添加元素:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">M(&#39;anker&#39;) &#x3D; 1024</span><br><span class="line">M.Count</span><br><span class="line">ans &#x3D; 5</span><br></pre></td></tr></table></figure>
-<h2 id="删除元素："><a href="#删除元素：" class="headerlink" title="删除元素："></a>删除元素：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">M.remove(&#39;anker&#39;) </span><br><span class="line">ans &#x3D; </span><br><span class="line">  Map - 属性:</span><br><span class="line">        Count: 4</span><br><span class="line">      KeyType: char</span><br><span class="line">    ValueType: double</span><br></pre></td></tr></table></figure>
-<h2 id="isKey"><a href="#isKey" class="headerlink" title="isKey:"></a>isKey:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">M.isKey(&#39;anker&#39;)或isKey(M, &#39;anker&#39;)</span><br><span class="line">ans &#x3D; 0</span><br></pre></td></tr></table></figure>
-<h2 id="返回key"><a href="#返回key" class="headerlink" title="返回key:"></a>返回key:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">keys(M)或M.keys</span><br><span class="line">ans &#x3D;</span><br><span class="line"> 1×4 cell 数组</span><br><span class="line">   &#123;&#39;Apr&#39;&#125;    &#123;&#39;Feb&#39;&#125;    &#123;&#39;Jan&#39;&#125;    &#123;&#39;Mar&#39;&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="返回value"><a href="#返回value" class="headerlink" title="返回value:"></a>返回value:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">values(M)或M.values</span><br><span class="line">ans &#x3D;</span><br><span class="line">  1×4 cell 数组</span><br><span class="line">    &#123;[178.4000]&#125;    &#123;[368.2000]&#125;    &#123;[327.2000]&#125;    &#123;[123]&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://ankertqf.github.io/2020/03/18/%E5%8D%95%E5%8F%8D%E6%96%9C%E6%9D%A0%E8%87%AA%E5%8A%A8%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%8F%8C%E5%8F%8D%E6%96%9C%E6%9D%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -518,8 +221,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/18/%E5%8D%95%E5%8F%8D%E6%96%9C%E6%9D%A0%E8%87%AA%E5%8A%A8%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%8F%8C%E5%8F%8D%E6%96%9C%E6%9D%A0/" class="post-title-link" itemprop="url">键值对container.Map</a>
+          键值对container.Map
         </h1>
 
         <div class="post-meta">
@@ -559,7 +261,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="使用MFC自动将windows路径中单反斜杠自动转换为双反斜杠"><a href="#使用MFC自动将windows路径中单反斜杠自动转换为双反斜杠" class="headerlink" title="使用MFC自动将windows路径中单反斜杠自动转换为双反斜杠"></a>使用MFC自动将windows路径中单反斜杠自动转换为双反斜杠</h1><h2 id="缘由："><a href="#缘由：" class="headerlink" title="缘由："></a>缘由：</h2><p>&ensp;&ensp;由于windows下路径复制时为单杠，手动改为双杠效率极低，因此想要实现单杠自动转换的代码，经过各种尝试发现只有在使用C的scanf和python的input()等输入函数时单杠才不会被当作转义字符，类似r’str\str’中r的作用，给变量赋值时会自动转为双反斜杠。</p>
+        <h1 id="使用MFC自动将windows路径中单反斜杠自动转换为双反斜杠"><a href="#使用MFC自动将windows路径中单反斜杠自动转换为双反斜杠" class="headerlink" title="使用MFC自动将windows路径中单反斜杠自动转换为双反斜杠"></a>使用MFC自动将windows路径中单反斜杠自动转换为双反斜杠</h1><h2 id="缘由："><a href="#缘由：" class="headerlink" title="缘由："></a>缘由：</h2><p>&ensp;&ensp;由于windows下路径复制时为单杠，手动改为双杠效率极低，因此想要实现单杠自动转换的代码，经过各种尝试发现只有在使用C的scanf和python的input()等输入函数时单杠才不会被当作转义字符，类似r’str\str’中r的作用，给变量赋值时会自动转为双反斜杠。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> Path[<span class="number">256</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%[^\n]"</span>, Path);<span class="comment">//以换行为结尾，可以读取带空格的字符串</span></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; Path &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">	system(<span class="string">"pause"</span>);</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="https://img-blog.csdnimg.cn/2020040109580866.png" alt="在这里插入图片描述">  &ensp;&ensp;&ensp;<img src="https://img-blog.csdnimg.cn/20200401095752165.png" alt="在这里插入图片描述"></p>
 <h2 id="Python-GUI"><a href="#Python-GUI" class="headerlink" title="Python GUI :"></a>Python GUI :</h2><p>首先尝试使用python中tkinter模块，实现了一个自动将输入路径中单斜杠转换为双反斜杠，并copy到剪切板的小程序：</p>
@@ -575,24 +277,38 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CMFCApplication1Dlg::OnBnClickedButton1</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">char</span> Path[<span class="number">256</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">	<span class="keyword">char</span> outPath[<span class="number">256</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line">	<span class="keyword">char</span>* temp = outPath;</span><br><span class="line">	input_edit.GetWindowText(inputPath);<span class="comment">//从文本框获取输入内容</span></span><br><span class="line">	<span class="built_in">memcpy</span>(Path, inputPath, inputPath.GetLength());</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//将单反斜杠替换为双反斜杠</span></span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="built_in">strlen</span>(Path); ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		*(temp++) = Path[i];</span><br><span class="line">		<span class="keyword">if</span> (Path[i] == <span class="string">'\\'</span>)</span><br><span class="line">			*(temp++) = <span class="string">'\\'</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//将修改结果显示到文本框</span></span><br><span class="line">	input_edit.SetWindowText(outPath);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//自动将修改结果copy到剪切板</span></span><br><span class="line">	<span class="keyword">if</span> (OpenClipboard())</span><br><span class="line">	&#123;</span><br><span class="line">		HGLOBAL clipbuffer;</span><br><span class="line">		<span class="keyword">char</span> * <span class="built_in">buffer</span>;</span><br><span class="line">		EmptyClipboard();</span><br><span class="line">		<span class="keyword">int</span> a = <span class="built_in">strlen</span>(outPath) + <span class="number">1</span>;</span><br><span class="line">		clipbuffer = GlobalAlloc(GMEM_DDESHARE, a);</span><br><span class="line">		<span class="built_in">buffer</span> = (<span class="keyword">char</span>*)GlobalLock(clipbuffer);</span><br><span class="line"></span><br><span class="line">		<span class="built_in">strcpy</span>(<span class="built_in">buffer</span>, outPath);</span><br><span class="line">		GlobalUnlock(clipbuffer);</span><br><span class="line">		SetClipboardData(CF_TEXT, clipbuffer);</span><br><span class="line">		CloseClipboard();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>运行，输入路径，点击转换并复制会自动将修改后的路径复制到剪切板，生成的exe大小为3.37M，启动速度超快，可放在任何位置，也可以固定到任务栏，极其方便。<br><img src="https://img-blog.csdnimg.cn/20200401141516367.png" alt="在这里插入图片描述"></p>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
+          <div class="post-tags">
+              <a href="/tags/%E5%8F%8D%E6%96%9C%E6%9D%A0/" rel="tag"># 反斜杠</a>
+              <a href="/tags/tkinter/" rel="tag"># tkinter</a>
+              <a href="/tags/MFC/" rel="tag"># MFC</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/18/Matlab%E9%94%AE%E5%80%BC%E5%AF%B9container.Map/" rel="next" title="键值对container.Map">
+      键值对container.Map <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
       </footer>
+    
   </article>
   
   
   
 
   </div>
-
-  
-
 
 
           </div>
@@ -643,6 +359,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用MFC自动将windows路径中单反斜杠自动转换为双反斜杠"><span class="nav-number">1.</span> <span class="nav-text">使用MFC自动将windows路径中单反斜杠自动转换为双反斜杠</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#缘由："><span class="nav-number">1.1.</span> <span class="nav-text">缘由：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-GUI"><span class="nav-number">1.2.</span> <span class="nav-text">Python GUI :</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vs2015-MFC"><span class="nav-number">1.3.</span> <span class="nav-text">vs2015+MFC:</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
